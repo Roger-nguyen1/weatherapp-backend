@@ -20,7 +20,9 @@ router.post("/", (req, res) => {
         .then((apiData) => {
           // Creates new document with weather data
           const newCity = new City({
-            cityName: req.body.cityName,
+            cityName:
+              req.body.cityName.charAt(0).toUpperCase() +
+              req.body.cityName.slice(1),
             main: apiData.weather[0].main,
             description: apiData.weather[0].description,
             tempMin: apiData.main.temp_min,
